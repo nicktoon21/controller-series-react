@@ -15,7 +15,7 @@ import { createStyles, makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles((theme) => 
 createStyles({
         contents: {
-            marginTop:'4rem',
+            padding: "0 1rem",
             display: 'flex',
             flexDirection:'column',
             alignItems: 'center',
@@ -24,7 +24,10 @@ createStyles({
         },
         form: {
             width: '100%',
-            marginTop: '2rem'
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: '2rem',
         },
     })
 );
@@ -73,7 +76,7 @@ export function HomePage() {
 
                 <Box mt={2}>
                     <Grid container>
-                        <Grid item xs>
+                        <Grid item sm>
                             <Link variant="body2">
                                 {"Esqueceu a senha?"}
                             </Link>
@@ -89,6 +92,7 @@ export function HomePage() {
                 <Box mt={8}>
                     <Copyright />
                 </Box>
+                
             </Typography>
         </Container>
     )
