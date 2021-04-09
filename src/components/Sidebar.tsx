@@ -10,21 +10,24 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 
 
 const useStyles = makeStyles({
     list: {
-      width: 250,
+      width: 350,
     },
     fullList: {
       width: 'auto',
     },
     fab: {
       position: 'absolute',
-      bottom: "70px",
-      right: "15px",
+      top: "3px",
+      left: "5px",
     },
   });
 
@@ -57,9 +60,12 @@ export default function Sidebar() {
         onKeyDown={toggleDrawer( false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                {['Inicio', 'Buscar', 'Cadastro', 'Mensagem'].map((text, index) => (
                     <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemIcon>
+                          <SettingsOutlinedIcon/>
+                          <FindInPageOutlinedIcon/>
+                          </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
