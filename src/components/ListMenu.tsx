@@ -1,28 +1,27 @@
+import { ReactNode } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 interface ListMenuProps {
-    name: [];
-    children: JSX.Element;
+    name: string;
+    children: ReactNode;
 }
 
 export default function ListMenu(props: ListMenuProps){
-    const itens = props.name;
     return(
         <>
             <List>
-                {itens.map((text, index) => (
-                    <ListItem button key={text}>
+                <ListItem button key={props.name}>
+                    
+                    <ListItemIcon>
+                        {props.children}
+                    </ListItemIcon>
 
-                        <ListItemIcon>
-                            {props.children}
-                        </ListItemIcon>
-                        
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                    <ListItemText primary={props.name}/>
+                </ListItem>
+
             </List>
         </>
     );

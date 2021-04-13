@@ -10,6 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
+import ListMenu from '../components/ListMenu';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
 
@@ -60,15 +61,9 @@ export default function Sidebar() {
         onKeyDown={toggleDrawer( false)}
         >
             <List>
-                {['Inicio', 'Buscar', 'Cadastro', 'Mensagem'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                          <SettingsOutlinedIcon/>
-                          <FindInPageOutlinedIcon/>
-                          </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListMenu name="Teste">
+                  <InboxIcon />
+                </ListMenu>
             </List>
             <Divider />
             <List>
