@@ -1,6 +1,5 @@
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Copyright from '../components/Copyright';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
@@ -37,8 +36,12 @@ export function HomePage() {
     const classes = useStyles();
 
     return (
-        <Container component="main" maxWidth="xs" >
-            <CssBaseline/>
+        <Container
+        style={{
+            marginTop:'10rem'
+        }} 
+        component="main"
+        maxWidth="xs" >
             <Typography component='div' align='center' className={classes.contents}>
 
                 <LocalMovies color="primary" fontSize="large"/>
@@ -77,12 +80,17 @@ export function HomePage() {
                 <Box mt={2}>
                     <Grid container>
                         <Grid item sm>
-                            <Link variant="body2">
+                            <Link
+                            href="/recovery"
+                            variant="body2"
+                            >
                                 {"Esqueceu a senha?"}
                             </Link>
                         </Grid>
                         <Grid item xs>
-                            <Link variant="body2">
+                            <Link
+                            href="/register"
+                            variant="body2">
                                 {"Não tem uma conta? Cadastre-se"}
                             </Link>
                         </Grid>

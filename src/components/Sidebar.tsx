@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 
 import clsx from 'clsx';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -13,13 +12,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import Box from '@material-ui/core/Box';
 
+
+import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import PlayCircleFilledWhiteOutlinedIcon from '@material-ui/icons/PlayCircleFilledWhiteOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
 
-import { ReactComponent as Login } from '../assets/login.svg';
 import { ReactComponent as Logout } from '../assets/logout.svg';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,14 +33,9 @@ const useStyles = makeStyles({
   fullList: {
     width: '15rem',
   },
-  fab: {
-    position: 'absolute',
-    top: "3px",
-    left: "5px",
-  },
   box: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    position: 'absolute',
+    bottom: '100px',
   },
 });
 
@@ -86,72 +81,74 @@ export default function Sidebar() {
     setState({ ...state, 'left': open });
   };
 
-  const list = () => (<div
-    className={clsx(classes.list, {
-      [classes.fullList]: 'left',
-    })}
-    role="presentation"
-    onClick={toggleDrawer(false)}
-    onKeyDown={toggleDrawer(false)}
-  >
-    <List>
+  const list = () => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: 'left',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
 
-      <ListMenu name="Home">
-        <HomeOutlinedIcon />
-      </ListMenu>
+        <ListMenu name="Home">
+          <HomeOutlinedIcon />
+        </ListMenu>
 
-      <ListMenu name="Profile">
-        <AccountCircleOutlinedIcon />
-      </ListMenu>
+        <ListMenu name="Profile">
+          <AccountCircleOutlinedIcon />
+        </ListMenu>
 
-      <ListMenu name="Favorite">
-        <PlayCircleFilledWhiteOutlinedIcon />
-      </ListMenu>
+        <ListMenu name="Favorite">
+          <PlayCircleFilledWhiteOutlinedIcon />
+        </ListMenu>
 
-    </List>
-    <Divider />
-    <List>
+      </List>
+      <Divider />
+      <List>
 
-      <ListMenu name="Settings">
-        <SettingsOutlinedIcon />
-      </ListMenu>
+        <ListMenu name="Settings">
+          <SettingsOutlinedIcon />
+        </ListMenu>
 
-      <ListMenu name="Search">
-        <FindInPageOutlinedIcon />
-      </ListMenu>
+        <ListMenu name="Search">
+          <FindInPageOutlinedIcon />
+        </ListMenu>
 
-    </List>
-  </div>
+      </List>
+    </div>
   )
 
   return (
 
-    <div>
-      <Button onClick={toggleDrawer(true)}>{
-        <Fab
-          color="primary"
-          aria-label="add"
-          className={classes.fab}
-        >
-          <AddIcon />
-        </Fab>}
-      </Button>
+    <Container >
 
-      <Drawer open={state['left']} onClose={toggleDrawer(false)}>
-        <Box>
-          {list()}
-        </Box>
+      <Drawer
+      open={state['left']}
+      onClose={toggleDrawer(false)}> 
+        {list()}
         <Box className={classes.box}>
-          <Button>
-            <Login />
-            {"Login"}
-          </Button>
           <Button>
             <Logout />
             {"Logout"}
           </Button>
         </Box>
       </Drawer>
-    </div>
+
+      <Button
+        style={{
+          margin: 12,
+        }}
+        type='submit'
+        variant='contained'
+        color='primary'
+        onClick={
+        toggleDrawer(true)
+        }
+      >
+        <MenuOutlinedIcon />
+      </Button>
+    </Container>
   )
 }
